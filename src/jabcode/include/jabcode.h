@@ -162,15 +162,20 @@ typedef struct {
 	jab_data* data;
 }jab_decoded_symbol;
 
-
-extern jab_encode* createEncode(jab_int32 color_number, jab_int32 symbol_number);
-extern void destroyEncode(jab_encode* enc);
-extern jab_int32 generateJABCode(jab_encode* enc, jab_data* data);
-extern jab_data* decodeJABCode(jab_bitmap* bitmap, jab_int32 mode, jab_int32* status);
-extern jab_data* decodeJABCodeEx(jab_bitmap* bitmap, jab_int32 mode, jab_int32* status, jab_decoded_symbol* symbols, jab_int32 max_symbol_number);
-extern jab_boolean saveImage(jab_bitmap* bitmap, jab_char* filename);
-extern jab_boolean saveImageCMYK(jab_bitmap* bitmap, jab_boolean isCMYK, jab_char* filename);
-extern jab_bitmap* readImage(jab_char* filename);
-extern void reportError(jab_char* message);
+#ifdef __cplusplus
+extern "C" {
+#endif
+jab_encode* createEncode(jab_int32 color_number, jab_int32 symbol_number);
+void destroyEncode(jab_encode* enc);
+jab_int32 generateJABCode(jab_encode* enc, jab_data* data);
+jab_data* decodeJABCode(jab_bitmap* bitmap, jab_int32 mode, jab_int32* status);
+jab_data* decodeJABCodeEx(jab_bitmap* bitmap, jab_int32 mode, jab_int32* status, jab_decoded_symbol* symbols, jab_int32 max_symbol_number);
+jab_boolean saveImage(jab_bitmap* bitmap, jab_char* filename);
+jab_boolean saveImageCMYK(jab_bitmap* bitmap, jab_boolean isCMYK, jab_char* filename);
+jab_bitmap* readImage(jab_char* filename);
+void reportError(jab_char* message);
+#ifdef __cplusplus
+}
+#endif
 
 #endif
